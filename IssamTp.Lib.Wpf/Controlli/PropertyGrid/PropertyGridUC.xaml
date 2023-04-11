@@ -14,10 +14,10 @@
 			<ComboBox ItemsSource="{Binding Path=ValoriPossibili}" SelectedItem="{Binding Valore, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:PropertyGridUC}, Path=ComboBoxEditingStyle}" />
 		</DataTemplate>
 		<DataTemplate x:Key="BoolDataTemplate">
-			<CheckBox IsChecked="{Binding Path=Valore, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+			<CheckBox IsChecked="{Binding Path=Valore, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Style="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:PropertyGridUC}, Path=CheckBoxEditingStyle}" />
 		</DataTemplate>
 		<DataTemplate x:Key="IntegralDataTemplate">
-			<TextBox Text="{Binding Path=Valore, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+			<TextBox Text="{Binding Path=Valore, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Style="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:PropertyGridUC}, Path=TextBoxEditingStyle}" />
 		</DataTemplate>
 	</UserControl.Resources>
 	<DataGrid
