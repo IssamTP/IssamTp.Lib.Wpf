@@ -19,7 +19,7 @@ namespace IssamTp.Lib.Wpf
         }
 
         /// <summary>Dependency property della etichetta della colonna "proprietà".</summary>
-        public static readonly DependencyProperty EtichettaTestataProprietaProperty = DependencyProperty.Register("EtichettaTestataProprieta", typeof(string), typeof(PropertyGridUC), new PropertyMetadata(string.Empty));
+        public static readonly DependencyProperty EtichettaTestataProprietaProperty = DependencyProperty.Register("EtichettaTestataProprieta", typeof(string), typeof(PropertyGridUC), new PropertyMetadata("Proprietà"));
         #endregion
 
         #region EtichettaTestataValore
@@ -31,7 +31,49 @@ namespace IssamTp.Lib.Wpf
         }
 
         /// <summary>Dependency property della etichetta della colonna "valore".</summary>
-        public static readonly DependencyProperty EtichettaTestataValoreProperty = DependencyProperty.Register("EtichettaTestataValore", typeof(string), typeof(PropertyGridUC), new PropertyMetadata(string.Empty));
+        public static readonly DependencyProperty EtichettaTestataValoreProperty = DependencyProperty.Register("EtichettaTestataValore", typeof(string), typeof(PropertyGridUC), new PropertyMetadata("Valore"));
+        #endregion
+
+        #region ComboBoxEditingStyle
+        /// <summary>Impostare questo stile per decorare le combo box.</summary>
+        public Style ComboBoxEditingStyle
+        {
+            get { return (Style)GetValue(ComboBoxEditingStyleProperty); }
+            set { SetValue(ComboBoxEditingStyleProperty, value); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly DependencyProperty ComboBoxEditingStyleProperty = DependencyProperty.Register("ComboBoxEditingStyle", typeof(Style), typeof(PropertyGridUC), new PropertyMetadata(new Style(typeof(ComboBox))));
+        #endregion
+
+        #region CheckBoxEditingStyle
+        /// <summary>
+        /// 
+        /// </summary>
+        public Style CheckBoxEditingStyle
+        {
+            get { return (Style)GetValue(CheckBoxEditingStyleProperty); }
+            set { SetValue(CheckBoxEditingStyleProperty, value); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly DependencyProperty CheckBoxEditingStyleProperty = DependencyProperty.Register("CheckBoxEditingStyle", typeof(Style), typeof(PropertyGridUC), new PropertyMetadata(new Style(typeof(CheckBox))));
+        #endregion
+
+        #region TextBoxEditingStyle
+        /// <summary>Impostare questo stile per decorare le TextBox.</summary>
+        public Style TextBoxEditingStyle
+        {
+            get { return (Style)GetValue(TextBoxEditingStyleProperty); }
+            set { SetValue(TextBoxEditingStyleProperty, value); }
+        }
+
+        /// <summary>Proprietà della text box.</summary>
+        public static readonly DependencyProperty TextBoxEditingStyleProperty = DependencyProperty.Register("TextBoxEditingStyle", typeof(Style), typeof(PropertyGridUC), new PropertyMetadata(new Style(typeof(TextBox))));
         #endregion
 
         #endregion

@@ -12,7 +12,6 @@ namespace IssamTp.Lib.Wpf
         ObservableCollection<PropertyGridRowVM> ProprietaValori
         {
             get;
-            set;
         }
     }
 
@@ -26,7 +25,7 @@ namespace IssamTp.Lib.Wpf
             get => _Valore;
             set
             {
-                if (_Valore != null && !_Valore.Equals(value))
+                if (_Valore == null || !_Valore.Equals(value))
                 {
                     _Valore = value;
                     NotifyPropertyChanged();
