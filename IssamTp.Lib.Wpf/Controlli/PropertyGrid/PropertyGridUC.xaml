@@ -1,0 +1,46 @@
+﻿<UserControl
+	x:Class="IssamTp.Lib.Wpf.PropertyGridUC"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:IssamTp.Lib.Wpf"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	d:DataContext="{d:DesignInstance Type={x:Type local:IPropertyGridVM},
+	                                 IsDesignTimeCreatable=True}"
+	d:DesignHeight="450"
+	d:DesignWidth="800"
+	mc:Ignorable="d">
+	<UserControl.Resources>
+		<!--  Definire qui i tre data template per i tre tipi dato.  -->
+		<DataTemplate x:Key="EnumDataTemplate" DataType="{x:Type vm:PropertyGridRowVM}">
+			<ComboBox ItemsSource="{Binding Path=ValoriPossibili}" SelectedItem="{Binding Valore, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+		</DataTemplate>
+		<DataTemplate x:Key="BoolDataTemplate">
+			<CheckBox IsChecked="{Binding Path=Valore, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+		</DataTemplate>
+		<DataTemplate x:Key="IntegralDataTemplate">
+			<TextBox Text="{Binding Path=Valore, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+		</DataTemplate>
+	</UserControl.Resources>
+	<DataGrid
+		AutoGenerateColumns="False"
+		CanUserAddRows="False"
+		ItemsSource="{Binding Path=ProprietaValore}"
+		SelectionMode="Single">
+		<DataGrid.Columns>
+			<DataGridTextColumn
+				Width="2*"
+				Binding="{Binding Path=Proprieta, Mode=OneWay}"
+				Header="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:PropertyGridUC}, Path=EtichettaTestataProprieta}"
+				IsReadOnly="True" />
+			<DataGridTemplateColumn Width="2*" Header="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:PropertyGridUC}, Path=EtichettaTestataProprieta}">
+				<DataGridTemplateColumn.CellTemplateSelector>
+					<local:TypeSelector
+						BoolDataTemplate="{StaticResource ResourceKey=BoolDataTemplate}"
+						EnumDataTemplate="{StaticResource ResourceKey=EnumDataTemplate}"
+						IntegralDataTemplate="{StaticResource ResourceKey=IntegralDataTemplate}" />
+				</DataGridTemplateColumn.CellTemplateSelector>
+			</DataGridTemplateColumn>
+		</DataGrid.Columns>
+	</DataGrid>
+</UserControl>
